@@ -23,7 +23,8 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="314dp"
-            android:background="#7c7c7c">
+            android:background="#7c7c7c"
+            android:id="@+id/AHH">
             android:
 
             <LinearLayout
@@ -116,7 +117,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            android:background="#d4d4d4">
+            android:background="#d4d4d4"
+            android:id="@+id/imsad">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -127,15 +129,29 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_gravity="center_horizontal">
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/sonofagun">
+
 
                     <TextView
                         android:layout_width="200dp"
                         android:layout_height="75dp"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="Alternative Radio"
+                        android:text="Click Up or Down"
                         android:id="@+id/Radio"
                         android:layout_marginLeft="250dp" />
+
+                    <ImageButton
+                        android:layout_width="60dp"
+                        android:layout_height="75dp"
+                        android:id="@+id/imageButton2"
+                        android:src="@mipmap/ic_launcher_down" />
+
+                    <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="75dp"
+                    android:id="@+id/imageButton2"
+                    android:src="@mipmap/ic_launcher_up" />
 
                     <ToggleButton
                         android:layout_width="wrap_content"
@@ -161,7 +177,7 @@
                 android:id="@+id/Power"
                 android:textOff="Power Off"
                 android:textOn="Power On"
-                android:onClick=""/>
+                android:onClick="powerButtonListener"/>
 
         </LinearLayout>
 
