@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Layout;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -19,8 +21,13 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout bottom;
     LinearLayout subuttom;
     TextView radioText;
+    ImageButton upButt;
+    ImageButton downButt;
     boolean powerOn;
     boolean amButton;
+    double FMval = 530.0;
+    double AMval = 88.1;
+
 
     /*TextView  = "" + radioNum
     */
@@ -29,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        upButt = (ImageButton) findViewById(R.id.upButton);
+        downButt = (ImageButton) findViewById(R.id.downButton);
         power = (ToggleButton)findViewById(R.id.Power);
         amfm =  (ToggleButton)findViewById(R.id.AMFM);
         top = (LinearLayout)findViewById(R.id.AHH);
@@ -37,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         TextView radioText = (TextView)findViewById(R.id.Radio);
 
         amfm.setOnClickListener(new AmButtonListener());
+        upButt.setOnClickListener(new upButtonListener());
+        downButt.setOnClickListener(new downButtonListener());
         powerOn = true;
         amButton = true;
 
@@ -63,25 +74,94 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private class AmButtonListener implements View.OnClickListener{
-
-int val = 10.3;
+    private class AmButtonListener implements View.OnClickListener {
 
 
-    public void onClick(View v){
-        if (amButton == true){
 
-            radioText.setText("%d", val);
+        public void onClick(View v) {
+            if (amButton == true) {
+
+                TextView text = (TextView) findViewById(R.id.Radio);
+                text.setText("" + AMval);
+                //radioText.setText("Hello");
+
+            } else {
+
+                TextView text = (TextView) findViewById(R.id.Radio);
+                text.setText("" + FMval);
+                //radioText.setText("Salsa");
+
+            }
+            amButton = !amButton;
 
         }
-        else{
 
-            radioText.setText("Salsa");
+    }
+
+    public class upButtonListener implements View.OnClickListener{
+
+        public void onClick(View v)
+        {
+            ImageButton upbutton = (ImageButton) findViewById(R.id.upButton);
+            TextView radioText = (TextView) findViewById(R.id.Radio);
+
+            // up button
+            if (AMval == 1700){
+                AMval = 530;
+            }
+            if (amButton == true) {
+                // on am station
+               AMval = AMval + 10;
+               radioText.setText("" + AMval);
+
+            }
+            else if (FMval == 107.9){
+                FMval = 88.1;
+            }
+            else {
+                // on fm station
+                FMval = FMval + .2;
+                radioText.setText(""+ FMval);
+
+            }
+
+
+
 
         }
-        amButton = !amButton;
-    }}
+    }
 
+    public class downButtonListener implements View.OnClickListener{
+
+        public void onClick(View v)
+        {
+
+            ImageButton downbutton = (ImageButton) findViewById(R.id.downButton);
+            TextView radioText = (TextView) findViewById(R.id.Radio);
+
+
+
+            // down button
+            if (AMval == 530){
+                AMval = 1700;
+            }
+            else if (amButton == true) {
+            // on am station
+            AMval = AMval - 10;
+            radioText.setText("" + AMval);
+            }
+            else if (FMval == 88.1){
+                FMval = 107.9;
+            }
+            else {
+            // on fm station
+            FMval = FMval - .2;
+            radioText.setText(""+ FMval);
+
+        }
+
+        }
+    }
 
 
 }
