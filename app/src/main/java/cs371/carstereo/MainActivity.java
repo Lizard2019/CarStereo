@@ -25,8 +25,11 @@ public class MainActivity extends AppCompatActivity {
     ImageButton downButt;
     boolean powerOn;
     boolean amButton;
-    double FMval = 530.0;
+    //double FMval = 530.0;
+    double FMval = 530;
+    int FMcur;
     double AMval = 88.1;
+    //int AMval = 881;
 
 
     /*TextView  = "" + radioNum
@@ -48,16 +51,20 @@ public class MainActivity extends AppCompatActivity {
         amfm.setOnClickListener(new AmButtonListener());
         upButt.setOnClickListener(new upButtonListener());
         downButt.setOnClickListener(new downButtonListener());
-        powerOn = true;
-        amButton = true;
+        //powerOn = true;
+        //amButton = true;
+
+        power.setBackgroundColor(Color.BLACK);
+        bottom.setBackgroundColor(Color.DKGRAY);
+        amfm.setBackgroundColor(Color.GRAY);
+        subuttom.setBackgroundColor(Color.BLACK);
 
 
     }
 
     public void powerButtonListener(View v){
 
-        if(powerOn == true)
-        {
+        if(powerOn == true) {
             power.setBackgroundColor(Color.CYAN);
             bottom.setBackgroundColor(Color.GREEN);
             amfm.setBackgroundColor(Color.MAGENTA);
@@ -70,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
             amfm.setBackgroundColor(Color.GRAY);
             subuttom.setBackgroundColor(Color.BLACK);
         }
+
+
         powerOn = !powerOn;
 
     }
@@ -102,26 +111,31 @@ public class MainActivity extends AppCompatActivity {
 
         public void onClick(View v)
         {
-            ImageButton upbutton = (ImageButton) findViewById(R.id.upButton);
+            //ImageButton upbutton = (ImageButton) findViewById(R.id.upButton);
             TextView radioText = (TextView) findViewById(R.id.Radio);
+            int ten = 10;
+            //int pointTwo = 2;
+            FMcur = ((int)FMval)*10;
 
             // up button
-            if (AMval == 1700){
+            if (AMval >= 1700)
+            {
                 AMval = 530;
             }
             if (amButton == true) {
                 // on am station
-               AMval = AMval + 10;
-               radioText.setText("" + AMval);
+                AMval = AMval + ten;
+                radioText.setText("" + AMval);
 
             }
-            else if (FMval == 107.9){
+            else if (FMval >= 107.9){
                 FMval = 88.1;
             }
             else {
                 // on fm station
-                FMval = FMval + .2;
-                radioText.setText(""+ FMval);
+                FMcur = FMcur + 2;
+                FMval = ((double)FMcur/10);
+                radioText.setText(""+ (double)FMval);
 
             }
 
@@ -136,26 +150,30 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v)
         {
 
-            ImageButton downbutton = (ImageButton) findViewById(R.id.downButton);
+            //ImageButton downbutton = (ImageButton) findViewById(R.id.downButton);
             TextView radioText = (TextView) findViewById(R.id.Radio);
-
+            int ten = 10;
+            //int pointTwo = 2;
+            FMcur = ((int)FMval)*10;
 
 
             // down button
-            if (AMval == 530){
+            if (AMval <= 530){
                 AMval = 1700;
             }
             else if (amButton == true) {
             // on am station
-            AMval = AMval - 10;
-            radioText.setText("" + AMval);
+            AMval = AMval - ten;
+            radioText.setText("" + (double)AMval);
             }
-            else if (FMval == 88.1){
+            else if (FMval <= 88.1){
                 FMval = 107.9;
             }
             else {
             // on fm station
-            FMval = FMval - .2;
+                FMcur = FMcur - 2;
+                FMval = ((double)FMcur/10);
+
             radioText.setText(""+ FMval);
 
         }
