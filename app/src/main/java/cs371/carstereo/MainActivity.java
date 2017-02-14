@@ -13,7 +13,8 @@ import android.widget.ToggleButton;
 
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+{
     int radioNum = 100;
     ToggleButton power;
     ToggleButton amfm;
@@ -36,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
     */
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         upButt = (ImageButton) findViewById(R.id.upButton);
@@ -58,13 +60,13 @@ public class MainActivity extends AppCompatActivity {
         bottom.setBackgroundColor(Color.DKGRAY);
         amfm.setBackgroundColor(Color.GRAY);
         subuttom.setBackgroundColor(Color.BLACK);
-
-
     }
 
-    public void powerButtonListener(View v){
+    public void powerButtonListener(View v)
+    {
 
-        if(powerOn == true) {
+        if(powerOn == true)
+        {
             power.setBackgroundColor(Color.CYAN);
             bottom.setBackgroundColor(Color.GREEN);
             amfm.setBackgroundColor(Color.MAGENTA);
@@ -77,38 +79,31 @@ public class MainActivity extends AppCompatActivity {
             amfm.setBackgroundColor(Color.GRAY);
             subuttom.setBackgroundColor(Color.BLACK);
         }
-
-
         powerOn = !powerOn;
-
     }
 
-    private class AmButtonListener implements View.OnClickListener {
-
-
-
-        public void onClick(View v) {
-            if (amButton == true) {
-
+    private class AmButtonListener implements View.OnClickListener
+    {
+        public void onClick(View v)
+        {
+            if (amButton == true)
+            {
                 TextView text = (TextView) findViewById(R.id.Radio);
                 text.setText("" + AMval);
                 //radioText.setText("Hello");
-
-            } else {
-
+            }
+            else
+            {
                 TextView text = (TextView) findViewById(R.id.Radio);
                 text.setText("" + FMval);
                 //radioText.setText("Salsa");
-
             }
             amButton = !amButton;
-
         }
-
     }
 
-    public class upButtonListener implements View.OnClickListener{
-
+    public class upButtonListener implements View.OnClickListener
+    {
         public void onClick(View v)
         {
             //ImageButton upbutton = (ImageButton) findViewById(R.id.upButton);
@@ -122,8 +117,9 @@ public class MainActivity extends AppCompatActivity {
             {
                 AMval = 530;
             }
-            if (amButton == true) {
-                // on am station
+            if(amButton == true) //on am station
+            {
+
                 AMval = AMval + ten;
                 radioText.setText("" + AMval);
 
@@ -131,25 +127,19 @@ public class MainActivity extends AppCompatActivity {
             else if (FMval >= 107.9){
                 FMval = 88.1;
             }
-            else {
-                // on fm station
+            else //on fm station
+            {
                 FMcur = FMcur + 2;
                 FMval = ((double)FMcur/10);
                 radioText.setText(""+ (double)FMval);
-
             }
-
-
-
-
         }
     }
 
-    public class downButtonListener implements View.OnClickListener{
-
+    public class downButtonListener implements View.OnClickListener
+    {
         public void onClick(View v)
         {
-
             //ImageButton downbutton = (ImageButton) findViewById(R.id.downButton);
             TextView radioText = (TextView) findViewById(R.id.Radio);
             int ten = 10;
@@ -161,25 +151,23 @@ public class MainActivity extends AppCompatActivity {
             if (AMval <= 530){
                 AMval = 1700;
             }
-            else if (amButton == true) {
-            // on am station
-            AMval = AMval - ten;
-            radioText.setText("" + (double)AMval);
+            else if (amButton == true) //on am station
+            {
+                AMval = AMval - ten;
+                radioText.setText("" + (double)AMval);
             }
             else if (FMval <= 88.1){
                 FMval = 107.9;
             }
-            else {
-            // on fm station
+            else // on fm station
+            {
                 FMcur = FMcur - 2;
                 FMval = ((double)FMcur/10);
 
             radioText.setText(""+ FMval);
 
-        }
+            }
 
         }
     }
-
-
 }

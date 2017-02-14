@@ -25,7 +25,6 @@
             android:layout_height="314dp"
             android:background="#7c7c7c"
             android:id="@+id/AHH">
-            android:
 
             <LinearLayout
                 android:orientation="vertical"
