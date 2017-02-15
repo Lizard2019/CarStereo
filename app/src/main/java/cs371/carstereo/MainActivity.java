@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity
     int FMcur;
     double AMval = 88.1;
     //int AMval = 881;
-
+    SeekBar volume;
 
     /*TextView  = "" + radioNum
     */
@@ -49,6 +50,9 @@ public class MainActivity extends AppCompatActivity
         bottom = (LinearLayout)findViewById(R.id.sonofagun);
         subuttom = (LinearLayout)findViewById(R.id.imsad);
         TextView radioText = (TextView)findViewById(R.id.Radio);
+        volume = (SeekBar)findViewById(R.id.Volume);
+//        int maxVal = volume.getMax();
+//        int seekBarVal = volume.getProgress();
 
         amfm.setOnClickListener(new AmButtonListener());
         upButt.setOnClickListener(new upButtonListener());
@@ -82,7 +86,51 @@ public class MainActivity extends AppCompatActivity
         powerOn = !powerOn;
     }
 
-    private class AmButtonListener implements View.OnClickListener
+//    public void volumeBarListener(SeekBar volume)//View v)
+//    public void volumeBar()
+//    {
+////        volume = (SeekBar)findViewById(R.id.Volume);
+//
+//        volume.setOnSeekBarChangeListener(
+//                    int progressVal;
+//                    new SeekBar.OnSeekBarChangeListener()
+//                    {
+//                        @Override
+//                        public void onProgressChanged(SeekBar volume, int progress, boolean fromUser)
+//                        {
+//                            progressVal = progress;
+//                        }
+//
+//                        @Override
+//                        public void onStartTrackingTouch(SeekBar volume)
+//                        {
+//
+//                        }
+//
+//                        @Override
+//                        public void onStopTrackingTouch(SeekBar volume)
+//                        {
+//
+//                        }
+//                    }
+//                )
+        //^from https://www.youtube.com/watch?v=l5FrTkGoeX8
+        //source code: http://www.codebind.com/android-tutorials-and-examples/android-studio-android-seekbar-example/
+        int maxVal = volume.getMax();
+        int seekBarVal = volume.getProgress();
+    }
+
+//    public class volumeBarListener implements SeekBar.OnSeekBarChangeListener //onProgressChanged, onStartTrackingTouch, onStopTrackingTouch
+//    {
+//        public void onClick(View v)
+//        {
+//            int maxVal = volume.getMax();
+//            int seekBarVal = volume.getProgress();
+//            onProgressChanged(volume, progress, true);
+//        }
+//    }
+
+    public class AmButtonListener implements View.OnClickListener
     {
         public void onClick(View v)
         {

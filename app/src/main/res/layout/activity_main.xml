@@ -167,7 +167,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/Volume"
                 android:layout_gravity="center_horizontal"
-                android:indeterminate="true" />
+                android:indeterminate="true"
+                android:onClick="volumeBarListener"
+                android:max="200"/>
 
             <ToggleButton
                 android:layout_width="wrap_content"
