@@ -116,9 +116,9 @@ public class MainActivity extends AppCompatActivity
 //                )
         //^from https://www.youtube.com/watch?v=l5FrTkGoeX8
         //source code: http://www.codebind.com/android-tutorials-and-examples/android-studio-android-seekbar-example/
-        int maxVal = volume.getMax();
-        int seekBarVal = volume.getProgress();
-    }
+//        int maxVal = volume.getMax();
+//        int seekBarVal = volume.getProgress();
+//    }
 
 //    public class volumeBarListener implements SeekBar.OnSeekBarChangeListener //onProgressChanged, onStartTrackingTouch, onStopTrackingTouch
 //    {
